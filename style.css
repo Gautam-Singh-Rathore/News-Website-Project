@@ -67,6 +67,7 @@ nav{
     border-bottom-left-radius: 0;
     color: white;
     border: none;
+    cursor: pointer;
     background-color: rgb(81, 166, 219);
 }
 
@@ -74,9 +75,51 @@ nav{
 #container{
     width: 100vw;
     min-height: 83vh;
-    padding: 1vh 10vw;
-    border: 2px solid red;
+    padding: 1vh 8vw;
+    /* border: 2px solid red; */
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;   
+    justify-content: space-between;   
+    margin-top: 2vh;
+}
+.news-card{
+    border: 1px solid rgb(163, 163, 163);
+    width: 30%;
+    /* padding:  0 10px ; */
+    margin-bottom: 2vh;
+    padding-bottom: 10px;
+}
+.news-image{
+    width: 100%;
+}
+.news-title{
+    font-weight: bold;
+    padding:  0 10px ;
+}
+.news-date{
+    color: grey;
+    margin: 1vh 0;
+    font-size: 14px;
+    padding:  0 10px ;
+}
+.news-author{
+    color: rgb(87, 83, 83);
+    margin: 1vh 0;
+    padding:  0 10px ;
+}
+.news-desc{
+    line-height:20px;
+    padding:  0 10px ;
+}
+
+/* Hover effect */
+.nav-links ul li:hover{
+    color: rgb(129, 117, 117);
+    cursor: pointer;
+}
+.news-card:hover{
+    transform: translateY(-4px);
+    transition: all 0.5 ease;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
 }
