@@ -1,14 +1,13 @@
 const URL = "https://newsapi.org/v2/everything?q=";
-const key = "a0ab00ef830147538f2a19f23e4716a7";
+const key = "747ded37b33c455893698bdb69eca9ff";
 const cont = document.getElementById("container");
 
 window.addEventListener("load", () => {
-  getNews("india&category=business");
+  // getNews("india&category=business");
+  getNews("finance");
 });
 
-function reload() {
-  window.location.reload();
-}
+
 
 
 document.getElementById("search-button").addEventListener("click", () => {
@@ -24,14 +23,14 @@ async function getNews(query) {
     }
     const request = await fetch(`${URL}${query}&apiKey=${key}`);
     const data = await request.json();
-    if (data.articles.length === 0) { // Check if data.articles is empty
-      showError();
-    } else {
-      showOnScreen(data.articles);
+     if (data?.articles.length === 0) { // Check if data.articles is empty
+       showError();
+     } else {
+      showOnScreen(data?.articles);
     } 
   } catch (error) {
     console.error("Error in fetching data : "+error);
-    showError();
+     showError();
   }
     
 }
@@ -49,7 +48,7 @@ function showOnScreen(articles) {
   cont.innerHTML = "";
   //console.log(articles);
   articles.forEach(article => {
-    if(article.urlToImage==null) return;
+    if(article?.urlToImage==null) return;
     createCard(article); // Call createCard function for each article
   });
 }
@@ -59,12 +58,12 @@ function createCard(el) {
   card.className = "news-card";
 
   card.addEventListener("click",()=>{
-    window.open(el.url , "_blank");
+    window.open(el?.url , "_blank");
   })
 
   if (el.urlToImage) {
     const image = document.createElement("img");
-    image.src = el.urlToImage;
+    image.src = el?.urlToImage;
     image.className = "news-image";
     card.appendChild(image);
   }
@@ -73,22 +72,22 @@ function createCard(el) {
   content.className = "news-content";
 
   const title = document.createElement("h3");
-  title.innerText = el.title || "No Title Available"; // Handle missing title
+  title.innerText = el?.title || "No Title Available"; // Handle missing title
   title.className = "news-title";
   content.appendChild(title);
 
   const date = document.createElement("p");
-  date.innerText = el.publishedAt ? new Date(el.publishedAt).toLocaleString() : "No Date Available"; // Handle missing date
+  date.innerText = el?.publishedAt ? new Date(el.publishedAt).toLocaleString() : "No Date Available"; // Handle missing date
   date.className = "news-date";
   content.appendChild(date);
 
   const author = document.createElement("p");
-  author.textContent = el.author || "No Author Available"; // Handle missing author
+  author.textContent = el?.author || "No Author Available"; // Handle missing author
   author.className = "news-author";
   content.appendChild(author);
 
   const description = document.createElement("p");
-  description.innerText = el.description || "No Description Available"; // Handle missing description
+  description.innerText = el?.description || "No Description Available"; // Handle missing description
   description.className = "news-desc";
   content.appendChild(description);
 
